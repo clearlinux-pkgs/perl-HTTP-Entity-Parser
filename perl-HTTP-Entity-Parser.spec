@@ -4,19 +4,15 @@
 #
 Name     : perl-HTTP-Entity-Parser
 Version  : 0.21
-Release  : 1
+Release  : 2
 URL      : https://cpan.metacpan.org/authors/id/K/KA/KAZEBURO/HTTP-Entity-Parser-0.21.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/K/KA/KAZEBURO/HTTP-Entity-Parser-0.21.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libh/libhttp-entity-parser-perl/libhttp-entity-parser-perl_0.21-1.debian.tar.xz
 Summary  : 'PSGI compliant HTTP Entity Parser'
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
-Requires: perl-HTTP-Entity-Parser-license
-Requires: perl-HTTP-Entity-Parser-man
-Requires: perl(ExtUtils::Config)
-Requires: perl(ExtUtils::Helpers)
-Requires: perl(ExtUtils::InstallPaths)
-Requires: perl(Module::Build::Tiny)
+Requires: perl-HTTP-Entity-Parser-license = %{version}-%{release}
+BuildRequires : buildreq-cpan
 BuildRequires : perl(ExtUtils::Config)
 BuildRequires : perl(ExtUtils::Helpers)
 BuildRequires : perl(ExtUtils::InstallPaths)
@@ -28,6 +24,15 @@ HTTP::Entity::Parser - PSGI compliant HTTP Entity Parser
 # SYNOPSIS
 use HTTP::Entity::Parser;
 
+%package dev
+Summary: dev components for the perl-HTTP-Entity-Parser package.
+Group: Development
+Provides: perl-HTTP-Entity-Parser-devel = %{version}-%{release}
+
+%description dev
+dev components for the perl-HTTP-Entity-Parser package.
+
+
 %package license
 Summary: license components for the perl-HTTP-Entity-Parser package.
 Group: Default
@@ -36,19 +41,11 @@ Group: Default
 license components for the perl-HTTP-Entity-Parser package.
 
 
-%package man
-Summary: man components for the perl-HTTP-Entity-Parser package.
-Group: Default
-
-%description man
-man components for the perl-HTTP-Entity-Parser package.
-
-
 %prep
-tar -xf %{SOURCE1}
-cd ..
 %setup -q -n HTTP-Entity-Parser-0.21
-mkdir -p %{_topdir}/BUILD/HTTP-Entity-Parser-0.21/deblicense/
+cd ..
+%setup -q -T -D -n HTTP-Entity-Parser-0.21 -b 1
+mkdir -p deblicense/
 mv %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/HTTP-Entity-Parser-0.21/deblicense/
 
 %build
@@ -66,12 +63,12 @@ fi
 
 %install
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/perl-HTTP-Entity-Parser
-cp LICENSE %{buildroot}/usr/share/doc/perl-HTTP-Entity-Parser/LICENSE
+mkdir -p %{buildroot}/usr/share/package-licenses/perl-HTTP-Entity-Parser
+cp LICENSE %{buildroot}/usr/share/package-licenses/perl-HTTP-Entity-Parser/LICENSE
 if test -f Makefile.PL; then
-make pure_install PERL_INSTALL_ROOT=%{buildroot}
+make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
-./Build install --installdirs=site --destdir=%{buildroot}
+./Build install --installdirs=vendor --destdir=%{buildroot}
 fi
 find %{buildroot} -type f -name .packlist -exec rm -f {} ';'
 find %{buildroot} -depth -type d -exec rmdir {} 2>/dev/null ';'
@@ -80,20 +77,20 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/site_perl/5.26.1/HTTP/Entity/Parser.pm
-/usr/lib/perl5/site_perl/5.26.1/HTTP/Entity/Parser/JSON.pm
-/usr/lib/perl5/site_perl/5.26.1/HTTP/Entity/Parser/MultiPart.pm
-/usr/lib/perl5/site_perl/5.26.1/HTTP/Entity/Parser/OctetStream.pm
-/usr/lib/perl5/site_perl/5.26.1/HTTP/Entity/Parser/UrlEncoded.pm
+/usr/lib/perl5/vendor_perl/5.26.1/HTTP/Entity/Parser.pm
+/usr/lib/perl5/vendor_perl/5.26.1/HTTP/Entity/Parser/JSON.pm
+/usr/lib/perl5/vendor_perl/5.26.1/HTTP/Entity/Parser/MultiPart.pm
+/usr/lib/perl5/vendor_perl/5.26.1/HTTP/Entity/Parser/OctetStream.pm
+/usr/lib/perl5/vendor_perl/5.26.1/HTTP/Entity/Parser/UrlEncoded.pm
 
-%files license
-%defattr(-,root,root,-)
-/usr/share/doc/perl-HTTP-Entity-Parser/LICENSE
-
-%files man
+%files dev
 %defattr(-,root,root,-)
 /usr/share/man/man3/HTTP::Entity::Parser.3
 /usr/share/man/man3/HTTP::Entity::Parser::JSON.3
 /usr/share/man/man3/HTTP::Entity::Parser::MultiPart.3
 /usr/share/man/man3/HTTP::Entity::Parser::OctetStream.3
 /usr/share/man/man3/HTTP::Entity::Parser::UrlEncoded.3
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/perl-HTTP-Entity-Parser/LICENSE
