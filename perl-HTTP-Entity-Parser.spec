@@ -4,11 +4,11 @@
 #
 Name     : perl-HTTP-Entity-Parser
 Version  : 0.21
-Release  : 11
+Release  : 12
 URL      : https://cpan.metacpan.org/authors/id/K/KA/KAZEBURO/HTTP-Entity-Parser-0.21.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/K/KA/KAZEBURO/HTTP-Entity-Parser-0.21.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libh/libhttp-entity-parser-perl/libhttp-entity-parser-perl_0.21-1.debian.tar.xz
-Summary  : 'PSGI compliant HTTP Entity Parser'
+Summary  : PSGI compliant HTTP Entity Parser
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
 Requires: perl-HTTP-Entity-Parser-license = %{version}-%{release}
@@ -28,6 +28,7 @@ use HTTP::Entity::Parser;
 Summary: dev components for the perl-HTTP-Entity-Parser package.
 Group: Development
 Provides: perl-HTTP-Entity-Parser-devel = %{version}-%{release}
+Requires: perl-HTTP-Entity-Parser = %{version}-%{release}
 
 %description dev
 dev components for the perl-HTTP-Entity-Parser package.
@@ -65,6 +66,7 @@ fi
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-HTTP-Entity-Parser
 cp LICENSE %{buildroot}/usr/share/package-licenses/perl-HTTP-Entity-Parser/LICENSE
+cp deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-HTTP-Entity-Parser/deblicense_copyright
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -94,3 +96,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 %files license
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/perl-HTTP-Entity-Parser/LICENSE
+/usr/share/package-licenses/perl-HTTP-Entity-Parser/deblicense_copyright
