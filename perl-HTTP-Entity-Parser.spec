@@ -4,7 +4,7 @@
 #
 Name     : perl-HTTP-Entity-Parser
 Version  : 0.21
-Release  : 9
+Release  : 10
 URL      : https://cpan.metacpan.org/authors/id/K/KA/KAZEBURO/HTTP-Entity-Parser-0.21.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/K/KA/KAZEBURO/HTTP-Entity-Parser-0.21.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libh/libhttp-entity-parser-perl/libhttp-entity-parser-perl_0.21-1.debian.tar.xz
