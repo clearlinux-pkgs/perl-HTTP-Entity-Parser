@@ -4,10 +4,10 @@
 #
 Name     : perl-HTTP-Entity-Parser
 Version  : 0.22
-Release  : 14
+Release  : 15
 URL      : https://cpan.metacpan.org/authors/id/K/KA/KAZEBURO/HTTP-Entity-Parser-0.22.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/K/KA/KAZEBURO/HTTP-Entity-Parser-0.22.tar.gz
-Summary  : PSGI compliant HTTP Entity Parser
+Summary  : 'PSGI compliant HTTP Entity Parser'
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
 Requires: perl-HTTP-Entity-Parser-license = %{version}-%{release}
@@ -28,7 +28,6 @@ use HTTP::Entity::Parser;
 Summary: dev components for the perl-HTTP-Entity-Parser package.
 Group: Development
 Provides: perl-HTTP-Entity-Parser-devel = %{version}-%{release}
-Requires: perl-HTTP-Entity-Parser = %{version}-%{release}
 Requires: perl-HTTP-Entity-Parser = %{version}-%{release}
 
 %description dev
@@ -100,8 +99,8 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/HTTP/Entity/Parser.pm
-/usr/lib/perl5/vendor_perl/5.28.2/HTTP/Entity/Parser/JSON.pm
-/usr/lib/perl5/vendor_perl/5.28.2/HTTP/Entity/Parser/MultiPart.pm
-/usr/lib/perl5/vendor_perl/5.28.2/HTTP/Entity/Parser/OctetStream.pm
-/usr/lib/perl5/vendor_perl/5.28.2/HTTP/Entity/Parser/UrlEncoded.pm
+/usr/lib/perl5/vendor_perl/5.30.1/HTTP/Entity/Parser.pm
+/usr/lib/perl5/vendor_perl/5.30.1/HTTP/Entity/Parser/JSON.pm
+/usr/lib/perl5/vendor_perl/5.30.1/HTTP/Entity/Parser/MultiPart.pm
+/usr/lib/perl5/vendor_perl/5.30.1/HTTP/Entity/Parser/OctetStream.pm
+/usr/lib/perl5/vendor_perl/5.30.1/HTTP/Entity/Parser/UrlEncoded.pm
