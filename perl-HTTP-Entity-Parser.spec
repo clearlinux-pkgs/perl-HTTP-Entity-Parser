@@ -4,7 +4,7 @@
 #
 Name     : perl-HTTP-Entity-Parser
 Version  : 0.25
-Release  : 26
+Release  : 27
 URL      : https://cpan.metacpan.org/authors/id/K/KA/KAZEBURO/HTTP-Entity-Parser-0.25.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/K/KA/KAZEBURO/HTTP-Entity-Parser-0.25.tar.gz
 Summary  : 'PSGI compliant HTTP Entity Parser'
@@ -99,8 +99,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.34.0/HTTP/Entity/Parser.pm
-/usr/lib/perl5/vendor_perl/5.34.0/HTTP/Entity/Parser/JSON.pm
-/usr/lib/perl5/vendor_perl/5.34.0/HTTP/Entity/Parser/MultiPart.pm
-/usr/lib/perl5/vendor_perl/5.34.0/HTTP/Entity/Parser/OctetStream.pm
-/usr/lib/perl5/vendor_perl/5.34.0/HTTP/Entity/Parser/UrlEncoded.pm
+/usr/lib/perl5/*
