@@ -7,7 +7,7 @@
 #
 Name     : perl-HTTP-Entity-Parser
 Version  : 0.25
-Release  : 34
+Release  : 35
 URL      : https://cpan.metacpan.org/authors/id/K/KA/KAZEBURO/HTTP-Entity-Parser-0.25.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/K/KA/KAZEBURO/HTTP-Entity-Parser-0.25.tar.gz
 Summary  : 'PSGI compliant HTTP Entity Parser'
